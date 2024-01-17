@@ -22,7 +22,7 @@ import numpy as np
 from nltk.tokenize import sent_tokenize
 
 # Load the Extracted Dataset
-extract_dataset = load_dataset('maulinnasari/dataset_ext_20_mn')
+extract_dataset = load_dataset('maulinnasari/dataset_ext_75_mn')
 
 # Preprocess the 'document' field to join the paragraphs into a single paragraph
 extract_dataset = extract_dataset.map(lambda example: {'document': ' '.join(example['document']), 'summary': example['summary']})
@@ -162,4 +162,4 @@ trainer = Seq2SeqTrainer(
 
 trainer.train()
 
-trainer.save_model("ext_20")
+trainer.save_model("ext_75")
