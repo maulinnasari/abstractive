@@ -4,7 +4,7 @@
 ### Load Input Doc (Extractive Summary)
 """
 from datasets import load_dataset
-from transformers import MBartForConditionalGeneration, MBartTokenizer
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from transformers import Seq2SeqTrainingArguments
 from transformers import DataCollatorForSeq2Seq
 from transformers import Seq2SeqTrainer
@@ -29,12 +29,12 @@ extract_dataset = extract_dataset.map(lambda example: {'document': ' '.join(exam
 
 """### Abstractive Summarization"""
 
-model_checkpoint = "facebook/mbart-large-cc25"
+model_checkpoint = "facebook/bart-large-cnn"
 tokenizer = MBartTokenizer.from_pretrained(model_checkpoint)
 model = MBartForConditionalGeneration.from_pretrained(model_checkpoint)
 
-max_input_length = 512
-max_target_length = 256
+max_input_length = 1024
+max_target_length = 128
 
 def tokenize_function(data):
     model_inputs = tokenizer(
