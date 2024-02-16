@@ -30,8 +30,8 @@ extract_dataset = extract_dataset.map(lambda example: {'document': ' '.join(exam
 """### Abstractive Summarization"""
 
 model_checkpoint = "facebook/bart-large-cnn"
-tokenizer = MBartTokenizer.from_pretrained(model_checkpoint)
-model = MBartForConditionalGeneration.from_pretrained(model_checkpoint)
+tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
+model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint)
 
 max_input_length = 1024
 max_target_length = 128
